@@ -1,0 +1,43 @@
+# Logs
+logs/
+*.log
+php_errors.log
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Configuration files with sensitive data
+config/local.php
+.env
+
+# Temporary files
+tmp/
+temp/
+cache/
+
+# Backup files
+*.bak
+*.backup
+*.sql.gz
+backup_*.sql
+
+# OS generated files
+Thumbs.db
+desktop.ini
+
+# PHP
+vendor/
+composer.phar
+composer.lock
+
+# Apache
+.htaccess.bak
+
+# Database dumps
+*.sql
+!database/schema.sql

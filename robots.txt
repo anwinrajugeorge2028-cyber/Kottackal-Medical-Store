@@ -1,0 +1,18 @@
+# Kottackal Medical Store - robots.txt
+# This file controls web crawler access
+
+User-agent: *
+Disallow: /config/
+Disallow: /includes/
+Disallow: /database/
+Disallow: /logs/
+Disallow: /backup.sh
+Disallow: /install.sh
+Disallow: /test.php
+Disallow: /logout.php
+
+# Allow public resources
+Allow: /public/
+
+# Sitemap (if you add one)
+# Sitemap: http://your-domain.com/sitemap.xml

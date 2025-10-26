@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Kottackal Medical Store</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="public-container">
+        <nav class="navbar">
+            <div class="navbar-content">
+                <div class="logo">
+                    <h1>🏥 Kottackal Medical Store</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="login.html" class="active">Login</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="main-content-public">
+            <div style="max-width: 400px; margin: 50px auto;">
+                <div class="card">
+                    <h2 style="text-align: center; margin-bottom: 30px;">Login to Your Account</h2>
+                    
+                    <form action="process/login_process.php" method="POST">
+                        <div class="form-group">
+                            <label>Username:</label>
+                            <input type="text" name="username" required placeholder="Enter your username">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Password:</label>
+                            <input type="password" name="password" required placeholder="Enter your password">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </button>
+                    </form>
+                    
+                    <div style="text-align: center; margin-top: 20px;">
+                        <p>Demo Credentials:</p>
+                        <p><strong>Admin:</strong> admin / password</p>
+                        <p><strong>User:</strong> user / password</p>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 12px;">
+                        <p>Don't have an account? <a href="register.html">Sign up</a></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        // Show any error messages passed via query string as an alert
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const error = params.get('error');
+            if (error) {
+                const container = document.querySelector('.public-container') || document.body;
+                const alertEl = document.createElement('div');
+                alertEl.className = 'alert alert-error';
+                alertEl.textContent = decodeURIComponent(error.replace(/\+/g, ' '));
+                container.insertBefore(alertEl, container.firstChild);
+            }
+        })();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

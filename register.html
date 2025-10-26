@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Registration - Kottackal Medical Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <h1>🏥 Kottackal Medical Store</h1>
+            </div>
+            <nav class="navbar">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="login.html?type=admin" class="nav-link">Admin Login</a>
+                <a href="login.html?type=user" class="nav-link">User Login</a>
+                <a href="register.html" class="nav-link active">Register</a>
+            </nav>
+        </header>
+
+        <div class="form-container">
+            <h2>👥 Customer Registration</h2>
+            <p style="text-align: center; color: #7f8c8d; margin-bottom: 1.5rem;">
+                Create a customer account to browse and purchase medicines
+            </p>
+            
+            <!-- FIXED: Form action points to process/register_process.php -->
+            <form action="process/register_process.php" method="POST">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required placeholder="Choose a username">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required placeholder="Choose a secure password">
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirm_password">Confirm Password:</label>
+                    <input type="password" id="confirm_password" name="confirm_password" required placeholder="Confirm your password">
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Create Customer Account</button>
+            </form>
+            
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <p>Already have an account? <a href="login.html?type=user">Login as User</a></p>
+                <p style="color: #7f8c8d; font-size: 0.9rem;">
+                    Need admin access? <a href="login.html?type=admin">Admin Login</a>
+                </p>
+            </div>
+            
+            <div style="background: #e8f4fd; padding: 15px; border-radius: 8px; margin-top: 1.5rem; border: 1px solid #3498db;">
+                <h4>🔒 Customer Account Features:</h4>
+                <ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
+                    <li>✅ Browse available medicines</li>
+                    <li>✅ View prices and stock levels</li>
+                    <li>✅ Purchase medicines online</li>
+                    <li>❌ Cannot add or delete medicines</li>
+                    <li>❌ Cannot modify inventory</li>
+                    <li>❌ No admin privileges</li>
+                </ul>
+            </div>
+            
+            <div style="background: #fff3cd; padding: 15px; border-radius: 8px; margin-top: 1rem; border: 1px solid #ffeaa7;">
+                <h4>💡 Important:</h4>
+                <p style="margin: 0; color: #856404;">
+                    This registration is for <strong>customer accounts only</strong>. 
+                    Admin accounts cannot be created through public registration.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

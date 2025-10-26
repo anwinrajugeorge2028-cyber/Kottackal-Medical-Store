@@ -8,8 +8,12 @@
  */
 
 // Prevent direct access in production
-if (getenv('PRODUCTION') === 'true') {
-    die('Access denied in production mode');
+// Check multiple conditions for production environment
+if (getenv('PRODUCTION') === 'true' || 
+    (isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] !== 'localhost' && 
+     !preg_match('/^(127\.|192\.168\.|10\.)/', $_SERVER['SERVER_ADDR'] ?? ''))) {
+    http_response_code(403);
+    die('Access denied. This diagnostic tool is only available in development environments.');
 }
 
 ?>
@@ -78,9 +82,12 @@ if (getenv('PRODUCTION') === 'true') {
                 ];
                 
                 // Test 5: Tables Exist
-                $tables = ['users', 'medicines', 'sales', 'suppliers'];
-                foreach ($tables as $table) {
-                    $stmt = $db->query("SHOW TABLES LIKE '$table'");
+                $requiredTables = ['users', 'medicines', 'sales', 'suppliers'];
+                foreach ($requiredTables as $table) {
+                    // Use prepared statement to safely check table existence
+                    $stmt = $db->prepare("SELECT 1 FROM information_schema.tables 
+                                          WHERE table_schema = :dbname AND table_name = :tablename LIMIT 1");
+                    $stmt->execute([':dbname' => DB_NAME, ':tablename' => $table]);
                     $exists = $stmt->rowCount() > 0;
                     $tests[] = [
                         'name' => "Table: $table",
